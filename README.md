@@ -2,6 +2,7 @@
  
 -Sprint 1:
 redirection vers FrontServlet   
+
 -Sprint 2:
 Creation classe mapping 
     String className;
@@ -19,3 +20,7 @@ Front Servlet :
 
 -Sprint 5:  
     -Comparer l'url obtenu avec la liste annotations dans Hashmap.getKey, si il ya correspondance voir si la méthode retourne modelView et puis renvoyer dans sa page qui correspond à l'attribut vue dans ModelView
+
+-Sprint 6:
+    -Ajout d' un attribut data de type HashMap et fonction addItem pour ajouter des valeurs dans data
+    -Récupérer les valeurs des fields des classes et puis ajouter dans data et renvoyer dans le modelView correspondant et afficher les valeurs
