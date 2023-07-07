@@ -1,5 +1,6 @@
 package modele;
 import java.sql.Date;
+import etu1905.framework.ModelView;
 
 public class Employe {
     int id;
