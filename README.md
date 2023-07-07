@@ -24,3 +24,4 @@ Front Servlet :
 -Sprint 6:
     -Ajout d' un attribut data de type HashMap et fonction addItem pour ajouter des valeurs dans data
     -Récupérer les valeurs des fields des classes et puis ajouter dans data et renvoyer dans le modelView correspondant et afficher les valeurs
+    
