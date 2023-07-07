@@ -8,3 +8,8 @@ Creation classe mapping
     String method;
 Front Servlet :
     HashMap<String, Mapping> mappingUrls;  
+-Sprint 3:
+    Remplissage du  HashMap<String, Mapping> mappingUrls dans la fonction init
+    Liste fonction annote
+    Liste classe dans le package classe annote
+    
