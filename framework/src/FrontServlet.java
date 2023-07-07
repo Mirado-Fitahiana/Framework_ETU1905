@@ -25,7 +25,6 @@ import etu1905.framework.ModelView;
 import etu1905.framework.Url;
 import etu1905.framework.Arguments;
 import etu1905.framework.Utils;
-
 public class FrontServlet extends HttpServlet {
     HashMap<String, Mapping> mappingUrls;
     String nomDePackage;

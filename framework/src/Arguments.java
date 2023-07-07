@@ -1,4 +1,5 @@
 package etu1905.framework;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
