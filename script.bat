@@ -1,24 +1,40 @@
-cd framework/src
-javac -d . *.java 
-jar -cvf ../../etu1905.jar etu1905
-copy ../../etu1905.jar ../../test-framework/WEB-INF/lib/
+cd framework\src
+javac -parameters -d . *.java 
+jar -cvf ..\..\etu1905.jar etu1905
+copy /y ..\..\etu1905.jar ..\..\test-framework\WEB-INF\lib\
+
+cd ..\..\test-framework\WEB-INF\classes
+
+javac -parameters -d . *.java 
+
+cd ..\..\
 
 
-REM Chemin du fichier etu1905.jar
-set "cheminJar=D:/github/framework/framework_ETU1905/Framework_ETU1905/etu1905.jar"
+mkdir ..\temp
+mkdir ..\temp\WEB-INF 
+mkdir ..\temp\bootstrap
+mkdir ..\temp\Images
+mkdir ..\temp\WEB-INF\classes
+mkdir ..\temp\WEB-INF\lib
 
-REM Vérifier si la variable d'environnement CLASSPATH est déjà définie
-if not defined CLASSPATH (
-  REM Si elle n'est pas définie, définir la variable CLASSPATH avec le chemin du fichier jar
-  set "CLASSPATH=%cheminJar%"
-) else (
-  REM Si elle est déjà définie, ajouter le chemin du fichier jar à la variable CLASSPATH
-  set "CLASSPATH=%CLASSPATH%;%cheminJar%"
+for /D %%G in (WEB-INF\classes\*) do (
+    mkdir "..\temp\WEB-INF\classes\%%~nxG"
+    xcopy /y "%%G\*.class" "..\temp\WEB-INF\classes\%%~nxG\"
 )
 
-cd ../../test-framework/WEB-INF/classes
-javac -d . *.java 
-cd ../../
-jar -cvf ../test-framework.war .
-cmd
-pause
+for /D %%G in ("..\temp\WEB-INF\classes\*") do (
+    dir /B "%%G" | findstr "^" > nul
+    if errorlevel 1 (
+        rmdir "%%G"
+    )
+)
+
+xcopy /y ".\*.jsp" "..\temp\" 
+xcopy /y ".\bootstrap" "..\temp\bootstrap" /E
+xcopy /y ".\Images" "..\temp\Images"
+xcopy /y ".\WEB-INF\*.xml" "..\temp\WEB-INF\"
+xcopy /y /E /I ".\WEB-INF\lib" "..\temp\WEB-INF\lib\"
+
+cd ..\temp
+jar -cvf ..\..\test-framework.war .
+CMD

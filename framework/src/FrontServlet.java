@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +26,27 @@ public class FrontServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             out.println("You are being redirected to FRONTSERVLET");
+<<<<<<< Updated upstream
             for (Map.Entry<String, Mapping> entry : mappingUrls.entrySet()) {
+=======
+
+            ModelView modelView = (ModelView)Utils.modelDeRedirection(request, mappingUrls);
+            RequestDispatcher dispat = request.getRequestDispatcher(modelView.getVueRedirection());
+
+            HashMap<String, Object> data = modelView.getData();                                    // Get all data of the mv
+
+            if(data != null){
+                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                    String key = entry.getKey();
+                    Object value = entry.getValue();
+                    out.println(key + " - "+ value);
+                    request.setAttribute(key, value);
+                }
+            }
+
+            dispat.forward(request, response); 
+            /*  for (Map.Entry<String, Mapping> entry : mappingUrls.entrySet()) {
+>>>>>>> Stashed changes
                 String clef = entry.getKey();// clef
                 Mapping map = entry.getValue(); // valeur
                 out.println("L' annotation: " + clef + " de valeur " + map.getClassName() + " de fonction appelée "
