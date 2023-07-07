@@ -15,6 +15,6 @@ version="2.4">
     </servlet>
     <servlet-mapping>
         <servlet-name>FrontServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>*.gg</url-pattern>
     </servlet-mapping>
 </web-app>
