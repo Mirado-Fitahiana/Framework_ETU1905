@@ -1,6 +1,9 @@
 package etu1905.framework;
 
 import java.io.*;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -75,7 +78,7 @@ public class Utils {
     }
     
     //Avoir toutes les classes dans un package spécifié
-    private static List<Class<?>> getLesClasses(String packageScannes) throws Exception{
+    public static List<Class<?>> getLesClasses(String packageScannes) throws Exception{
         //System.out.println(" packageScannes : " + packageScannes);
         List<Class<?>> classes = new ArrayList<>();
         try {
@@ -119,9 +122,6 @@ public class Utils {
             // TODO: handle exception
         }
         return methodesAnnotees;
-    }
-    public static String majuscule(String s){
-        return s.substring(0,1).toUpperCase()+s.substring(1, s.length());
     }
 
     public static void uploadFile(FileUpload file, String pathName, String value, HttpServletRequest request) throws Exception {
